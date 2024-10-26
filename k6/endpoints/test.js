@@ -1,15 +1,20 @@
 import http from "k6/http";
-import { sleep } from "k6";
+import { sleep, check } from "k6";
 import { baseUrl, generatePayload, params } from "../config/config.js";
+import { baselineOptions } from "../config/scenarios.js";
 
+export const options = baselineOptions;
 const payload = generatePayload();
 let userRegisterRes;
 
 export default function () {
-  http.get(baseUrl);
+  const getResponse = http.get(baseUrl);
+  sleep(1);
 
   const postUserRegister = `${baseUrl}/user/register/`;
-  userRegisterRes = http.post(postUserRegister, payload, params);
 
-  sleep(1);
+  userRegisterRes = http.post(postUserRegister, payload, params);
+  check(getResponse, {
+    "status is 200": (r) => r.status === 200,
+  });
 }
