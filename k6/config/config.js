@@ -1,12 +1,12 @@
-export const baseUrl = "https://test.k6.io";
+export const baseUrl = "https://test-api.k6.io/";
 
 export const generatePayload = () => {
-  const name = "nombre";
-  const alias = "alias";
+  const username = "testk6";
+  const password = "test";
 
   return JSON.stringify({
-    name: name,
-    alias: alias,
+    username: username,
+    password: password,
   });
 };
 
