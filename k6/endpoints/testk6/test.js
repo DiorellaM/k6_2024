@@ -1,5 +1,5 @@
 import http from "k6/http";
-import { sleep, check } from "k6";
+import { sleep } from "k6";
 import { baseUrl } from "../../config/config.js";
 import { quickValidation } from "../../config/scenarios.js";
 import { logResponse } from "../../support/helpers.js";
