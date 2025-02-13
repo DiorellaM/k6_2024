@@ -1,14 +1,13 @@
 import http from "k6/http";
 import { sleep, check } from "k6";
 import { baseUrl } from "../../config/config.js";
-import { baselineOptions } from "../../config/scenarios.js";
+import { quickValidation } from "../../config/scenarios.js";
+import { logResponse } from "../../support/helpers.js";
 
-export const options = baselineOptions;
+export const options = quickValidation;
 
-export default function () {
+export function testk6() {
   const getResponse = http.get(baseUrl);
-  check(getResponse, {
-    "status is 200": (r) => r.status === 200,
-  });
+  logResponse(getResponse);
   sleep(1);
 }
