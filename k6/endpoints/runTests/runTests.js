@@ -1,10 +1,10 @@
-import { quickValidation } from "../../config/scenarios.js";
-import { userRegister } from "../userRegister/userRegister.js";
-import { testk6 } from "../testk6/test.js";
+import test from "../testk6/test.js";
+import userRegister from "../userRegister/userRegister.js";
+import { quickValidation } from "../../config/shared-iterations-options.js";
 
 export const options = quickValidation;
 
 export default function () {
   userRegister();
-  testk6();
+  test();
 }
