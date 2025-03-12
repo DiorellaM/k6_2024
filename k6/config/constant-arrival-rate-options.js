@@ -4,7 +4,7 @@ export const oneHourValidation = {
       executor: "constant-arrival-rate",
       rate: 8,
       timeUnit: "1m",
-      duration: "1h",
+      duration: "1m",
       preAllocatedVUs: 5,
       maxVUs: 10,
     },
