@@ -17,6 +17,7 @@ export default function () {
 
   group("GET", function () {
     const getMyCrocodiles = `${baseUrl}my/crocodiles/`;
+
     let myCrocodilesRes = http.get(getMyCrocodiles, getPrivateHeaders(token));
     logResponse(myCrocodilesRes);
 
@@ -27,6 +28,7 @@ export default function () {
 
   group("POST", function () {
     const postMyCrocodileUrl = `${baseUrl}my/crocodiles/`;
+
     let postRes = http.post(
       postMyCrocodileUrl,
       crocodilePayload,
@@ -46,6 +48,17 @@ export default function () {
     );
 
     logResponse(crocodilePutRes);
+  });
+  group("DELETE", function () {
+    if (crocodileId) {
+      const deleteCrocodileUrl = `${baseUrl}my/crocodiles/${crocodileId}/`;
+      let deleteRes = http.del(
+        deleteCrocodileUrl,
+        null,
+        getPrivateHeaders(token)
+      );
+      logResponse(deleteRes);
+    }
   });
   sleep(1);
 }

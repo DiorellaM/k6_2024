@@ -4,7 +4,9 @@ import { loginPayload } from "../testData/payloads.js";
 
 export function logResponse(response) {
   if (
-    (response.status !== 200 && response.status !== 201) ||
+    (response.status !== 200 &&
+      response.status !== 201 &&
+      response.status !== 204) ||
     response.timings.duration > 2000
   ) {
     console.error(
