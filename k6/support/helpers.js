@@ -7,10 +7,12 @@ export function logResponse(response) {
     (response.status !== 200 &&
       response.status !== 201 &&
       response.status !== 204) ||
-    response.timings.duration > 2000
+    (response.timings && response.timings.duration > 2000)
   ) {
     console.error(
-      `Status: ${response.status}, Response time: ${response.timings.duration}ms, Body: ${response.body}`
+      `Status: ${response.status}, Response time: ${
+        response.timings ? response.timings.duration : "N/A"
+      }ms, Body: ${response.body}`
     );
   }
 }
